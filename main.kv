@@ -1,0 +1,43 @@
+#:include cube.kv
+
+FloatLayout:
+    Background:
+        id: background
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "sky.png"
+            Rectangle:
+                size: self.width, 256
+                pos: self.pos[0], self.pos[1] + self.height - 320
+                texture: self.snowflake_texture
+            Rectangle:
+                size: self.width, 128
+                pos: self.pos[0], self.pos[1]
+                texture: self.winter_texture
+    Label:
+        id: score
+        size_hint_y: None
+        height: 128
+        text: "0"
+        color: 1, 1, 1, 1
+        font_size: 54
+        bold: True
+
+    Button:
+        id: start_button
+        text: "Start game"
+        font_size: 48
+        background_normal: "transparent.png"
+        background_down: "transparent.png"
+        on_release:
+            self.disabled = True
+            self.opacity = 0
+            app.start_game()
+    Gift:
+        id: gift
+        source: "gift.png"
+        size_hint: None, None
+        size: 64, 64
+        pos: 100, (root.height - 128) / 2.0

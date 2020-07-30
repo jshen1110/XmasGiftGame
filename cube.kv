@@ -1,0 +1,32 @@
+<Cube>:
+    bottom_body_position: self.pos[1]
+    bottom_cap_position: self.cube_center - self.GAP_SIZE/2.0 - self.CAP_SIZE
+    top_cap_position: self.cube_center + self.GAP_SIZE/2.0
+    top_body_position: self.cube_center + self.GAP_SIZE/2.0 + self.CAP_SIZE
+
+    canvas.before:
+        Rectangle:
+            # Bottom cube body
+            size: 64, self.bottom_cap_position - self.bottom_body_position
+            pos: self.pos[0] + (108 - 64)/2.0, self.bottom_body_position
+            texture: self.cube_body_texture
+            tex_coords: self.lower_cube_tex_coords
+
+        Rectangle:
+            # Bottom cube cap
+            size: 108, self.CAP_SIZE
+            pos: self.pos[0], self.bottom_cap_position
+            source: "cube_cap.png"
+
+        Rectangle:
+            # Top cube cap
+            size: 108, self.CAP_SIZE
+            pos: self.pos[0], self.top_cap_position
+            source: "cube_cap.png"
+
+        Rectangle:
+            # Top cube body
+            size: 64, self.top - self.top_body_position
+            pos: self.pos[0] + (108-64)/2.0, self.top_body_position
+            texture: self.cube_body_texture
+            tex_coords: self.top_cube_tex_coords
